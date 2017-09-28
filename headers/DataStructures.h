@@ -20,6 +20,7 @@ namespace Auth {
         // Constructors and destructors
         UserItem() : uid {""}, pwd {""}, name {""}, authorizedServices {}, date {-1} {}
         UserItem(const UserItem& other) : uid {other.uid}, pwd {other.pwd}, name {other.name}, authorizedServices {other.authorizedServices}, date {other.date} {}
+        void operator=(const UserItem& other) { uid = other.uid; pwd = other.pwd; name = other.name; authorizedServices = other.authorizedServices; date = other.date;}
         virtual ~UserItem() {}
 
         // Setters and getters
@@ -51,6 +52,7 @@ namespace Auth {
         // Constructors and destructors
         WhitelistEnabledService() : serviceName {""}, isWhitelistingEnabled {false} {}
         WhitelistEnabledService(const WhitelistEnabledService& other) : serviceName {other.serviceName}, isWhitelistingEnabled {other.isWhitelistingEnabled} {}
+        void operator=(const WhitelistEnabledService& other) { serviceName = other.serviceName; isWhitelistingEnabled = other.isWhitelistingEnabled; }
         virtual ~WhitelistEnabledService() {}
 
         // Setters and getters
@@ -75,6 +77,7 @@ namespace Auth {
         // Constructors and destructors
         WhiteListedUser() : uid {""}, service {""} {}
         WhiteListedUser(const WhiteListedUser& other) : uid {other.uid}, service {other.service} {}
+        void operator=(const WhiteListedUser& other) { uid = other.uid; service = other.service; }
         virtual ~WhiteListedUser() {}
 
         // Setters and getters

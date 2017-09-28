@@ -6,5 +6,8 @@ add_custom_target(Headers
     SOURCES
     "DataStructures.h"
     "Auth.h"
-    "Utils.h")
+    "Utils.h"
+    "Exceptions.h"
+    "Mocks.h"
+    "GapiWrapper.h")
 

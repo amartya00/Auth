@@ -2,6 +2,17 @@ cmake_minimum_required(VERSION 3.0)
 include(ExternalProject)
 find_package(Git REQUIRED)
 
+# Build mock library
+add_library(authmocks SHARED
+    "mocks/MockDynamoDBClient.cc"
+    "mocks/MockGapiWrapper.cc"
+    )
+
+target_link_libraries(
+    authmocks
+    aws-cpp-sdk-core
+    aws-cpp-sdk-dynamodb)
+
 # Add catch as external project.
 ExternalProject_Add(
     catch
@@ -33,6 +44,11 @@ add_executable(WhitelistEnabledServiceTest "datastructures/WhitelistEnabledServi
 add_dependencies(WhitelistEnabledServiceTest catch)
 target_link_libraries(WhitelistEnabledServiceTest auth)
 
+add_executable(SigninTest "auth/SigninTest.cc")
+add_dependencies(SigninTest catch)
+target_link_libraries(SigninTest auth authmocks)
+
 add_test(UserDataTest UserDataTest)
 add_test(WhiteListedUserTest WhiteListedUserTest)
 add_test(WhitelistEnabledServiceTest WhitelistEnabledServiceTest)
+add_test(SigninTest SigninTest)

@@ -66,7 +66,7 @@ void Sigsegv::Auth::UserItem::fromAttributeMap(const Aws::Map<Aws::String, Aws::
         name = Sigsegv::Utils::toStdString(attrMap.at("n").GetS());
     }
     if (attrMap.find("a") != attrMap.end()) {
-        std::string servicesStr {Sigsegv::Utils::toStdString(attrMap.at("n").GetS())};
+        std::string servicesStr {Sigsegv::Utils::toStdString(attrMap.at("a").GetS())};
         std::istringstream iss {servicesStr};
         std::string word;
         while(std::getline(iss, word, ',')) {
@@ -113,10 +113,12 @@ std::string Sigsegv::Auth::UserItem::toKeyConditionExpression() const {
         expressions.push_back("p = :p");
     }
     std::string retval = "";
-    for (unsigned int i = 0; i < expressions.size() - 1; i++) {
+    for (unsigned int i = 0; expressions.size() > 0 && i < expressions.size() - 1; i++) {
         retval += expressions[i] + " and ";
     }
-    retval += expressions[expressions.size() - 1];
+    if (expressions.size() > 0) {
+        retval += expressions[expressions.size() - 1];
+    }
     return retval;
 }
 
