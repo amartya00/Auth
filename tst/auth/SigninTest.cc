@@ -43,6 +43,7 @@ SCENARIO ("An existing user tries to sign in to a non whitelisted service") {
         Sigsegv::Auth::Service service(client, iss, gapi);
 
         WHEN ("I try to sign in") {
+
             auto response = service.signinOrRegister("123", "S1");
 
             THEN ("I should get back my password and name and uid") {

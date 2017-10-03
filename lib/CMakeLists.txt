@@ -21,6 +21,7 @@ add_library(auth SHARED
     "auth/IsUserWhitelisted.cc"
     "auth/IsUserRegisteredForService.cc"
     "auth/WriteUserDate.cc"
+    "auth/AuthorizeUser.cc"
     )
 
 target_link_libraries(

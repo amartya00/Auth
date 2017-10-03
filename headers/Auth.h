@@ -22,7 +22,7 @@ namespace Sigsegv {
             // Make gapi calls for user info
             bool isWhitelistingEnabledForService(const std::string& serviceName) const;
             bool isUserWhitelisted(const Sigsegv::Auth::UserItem& user, const std::string& serviceName) const;
-            Sigsegv::Auth::UserItem IsUserRegisteredForService(const Sigsegv::Auth::UserItem& user, const std::string& service) const;
+            Sigsegv::Auth::UserItem isUserRegisteredForService(const Sigsegv::Auth::UserItem& user, const std::string& service) const;
             void writeUserData(const Sigsegv::Auth::UserItem& user) const;
 
         public:

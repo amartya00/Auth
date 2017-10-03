@@ -48,7 +48,12 @@ add_executable(SigninTest "auth/SigninTest.cc")
 add_dependencies(SigninTest catch)
 target_link_libraries(SigninTest auth authmocks)
 
+add_executable(AuthorizeUserTest "auth/AuthorizeUserTest.cc")
+add_dependencies(AuthorizeUserTest catch)
+target_link_libraries(AuthorizeUserTest auth authmocks)
+
 add_test(UserDataTest UserDataTest)
 add_test(WhiteListedUserTest WhiteListedUserTest)
 add_test(WhitelistEnabledServiceTest WhitelistEnabledServiceTest)
 add_test(SigninTest SigninTest)
+add_test(AuthorizeUserTest AuthorizeUserTest)

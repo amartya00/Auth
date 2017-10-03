@@ -18,7 +18,7 @@ Sigsegv::Auth::UserItem Sigsegv::Auth::Service::signinOrRegister(const std::stri
         }
     }
 
-    auto returnedUserData = IsUserRegisteredForService(userData, serviceName);
+    auto returnedUserData = isUserRegisteredForService(userData, serviceName);
     for (auto s : returnedUserData.getAuthorizedServices()) {
         if (s.compare(serviceName) == 0) {
             // If already registered
