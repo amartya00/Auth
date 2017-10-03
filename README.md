@@ -48,11 +48,11 @@
 #### Usage:
     - Integrate this library by linking libauth.so to your application.
     - Instantiate the auth service by creating the auth object with the necessary json:
-    
 
-<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">{
-    <span style="color: #007700">&quot;WhitelistedServicesTable&quot;</span> : <span style="background-color: #fff0f0">&quot;TABLENAME&quot;</span>,
-    <span style="color: #007700">&quot;WhitelistedUsersTable&quot;</span> : <span style="background-color: #fff0f0">&quot;TABLENAME&quot;</span>,
-    <span style="color: #007700">&quot;AuthTable&quot;</span> : <span style="background-color: #fff0f0">&quot;TABLENAME&quot;</span>
-}
-</pre></div>
+```json
+    {
+        "WhitelistedServicesTable" : "TABLENAME",
+        "WhitelistedUsersTable" : "TABLENAME",
+        "AuthTable" : "TABLENAME"
+    }
+```
