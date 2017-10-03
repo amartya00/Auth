@@ -35,4 +35,3 @@ target_link_libraries(
     jsoncpp
     curl
     gapiwrapper)
-
