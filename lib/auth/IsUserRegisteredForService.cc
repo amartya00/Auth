@@ -11,7 +11,7 @@
 
 Sigsegv::Auth::UserItem Sigsegv::Auth::Service::isUserRegisteredForService(const Sigsegv::Auth::UserItem &user, const std::string &service) const {
     Sigsegv::Auth::UserItem item;
-    item.setUid(user.getPwd());
+    item.setUid(user.getUid());
     item.setPwd(user.getPwd());
 
     auto result = ddbClient->Query(

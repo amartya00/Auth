@@ -29,6 +29,12 @@ Sigsegv::Auth::UserItem Sigsegv::Auth::Service::signinOrRegister(const std::stri
         // First time user. Set pwd and date.
         userData.setPwd(std::to_string(std::hash<std::string>{}(userData.getUid() + std::to_string(std::time(0)) + std::to_string(std::rand()))));
         userData.setDate((long int)std::time(0));
+    } else {
+        userData.setPwd(returnedUserData.getPwd());
+        userData.setDate(returnedUserData.getDate());
+    }
+    for (auto s : returnedUserData.getAuthorizedServices()) {
+        userData.addAuthorizedService(s);
     }
     userData.addAuthorizedService(serviceName);
     writeUserData(userData);

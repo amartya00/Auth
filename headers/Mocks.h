@@ -3,6 +3,7 @@
 
 #include <set>
 #include <string>
+#include <vector>
 
 #include <curl/curl.h>
 #include <aws/core/utils/Outcome.h>
@@ -19,6 +20,9 @@ namespace Sigsegv {
             class Context {
             public:
                 Aws::DynamoDB::Model::PutItemRequest putItemRequest;
+                Aws::DynamoDB::Model::QueryRequest userQueryItemRequest;
+                Aws::DynamoDB::Model::QueryRequest serviceWhitelistQueryItemRequest;
+                Aws::DynamoDB::Model::QueryRequest userWhitelistQueryItemRequest;
             };
 
             class MockGapiWrapper : public GapiWrapper {
@@ -31,9 +35,9 @@ namespace Sigsegv {
 
             class MockDynamoDBClient : public Aws::DynamoDB::DynamoDBClient {
             private:
-                Aws::Map<Aws::String, Aws::DynamoDB::Model::AttributeValue> queryUserItemResponse;
-                Aws::Map<Aws::String, Aws::DynamoDB::Model::AttributeValue> queryWhitelistedUserResponse;
-                Aws::Map<Aws::String, Aws::DynamoDB::Model::AttributeValue> queryServiceWhitelistingResponse;
+                std::vector<Aws::Map<Aws::String, Aws::DynamoDB::Model::AttributeValue>> queryUserItemResponse;
+                std::vector<Aws::Map<Aws::String, Aws::DynamoDB::Model::AttributeValue>> queryWhitelistedUserResponse;
+                std::vector<Aws::Map<Aws::String, Aws::DynamoDB::Model::AttributeValue>> queryServiceWhitelistingResponse;
 
                 bool succeedOnQuery {true};
                 bool succeedOnPutItem {true};
@@ -56,6 +60,11 @@ namespace Sigsegv {
                 void setQueryUserItemResponse(const std::string& uid, const std::string& pwd, const std::string& name, const long int date, const std::set<std::string>& authorizedServices);
                 void setQueryWhitelistedUserResponse(const std::string& uid, const std::string& service);
                 void setServiceWhitelistingResponse(const std::string& service, const bool isWhitelisted);
+
+                void addQueryUserItemResponse(const std::string& uid, const std::string& pwd, const std::string& name, const long int date, const std::set<std::string>& authorizedServices);
+                void addQueryWhitelistedUserResponse(const std::string& uid, const std::string& service);
+                void addServiceWhitelistingResponse(const std::string& service, const bool isWhitelisted);
+
                 void setContext(const std::shared_ptr<Context>& context);
             };
         }
