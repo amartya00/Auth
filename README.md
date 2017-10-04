@@ -46,8 +46,21 @@
         - Other attributes: name, last date of registration, list of authorized services.
 
 #### Usage:
-    - Integrate this library by linking libauth.so to your application.
-    - Instantiate the auth service by creating the auth object with the necessary json:
+    - Installation:
+      - git clone https://github.com/amartya00/Auth.git
+      - cd Auth
+      - mkdir build
+      - cd build
+      - cmake ..
+      - make
+      - ctest
+      - sudo make install
+    - After installing, the header files should be in /usr/include/auth/ and the 2 libraries (libauth.so and libgapiwrapper.so) should be in /usr/local/lib/
+    - NOTE: The following libraries need to be installed before you can build this: 
+      - [aws-cpp-sdk-core](https://github.com/aws/aws-sdk-cpp)
+      - [aws-cpp-sdk-dynamodb](https://github.com/aws/aws-sdk-cpp)
+      - [jsoncpp](https://github.com/open-source-parsers/jsoncpp)
+      - [curl](https://curl.haxx.se/)
 
 ```json
     {

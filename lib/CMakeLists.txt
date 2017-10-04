@@ -35,3 +35,6 @@ target_link_libraries(
     jsoncpp
     curl
     gapiwrapper)
+
+install(TARGETS auth DESTINATION lib)
+install(TARGETS gapiwrapper DESTINATION lib)
